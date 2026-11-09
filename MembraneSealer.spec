@@ -9,7 +9,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('a_config/motor_config.yaml', 'a_config')],
     hiddenimports=hiddenimports,
     hookspath=[],
     hooksconfig={},

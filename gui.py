@@ -7,7 +7,18 @@ import yaml
 from pathlib import Path
 from c_motor_control.abort import AbortedError
 
-_CONFIG_PATH = Path(__file__).parent / 'a_config' / 'motor_config.yaml'
+def _resolve_config_path():
+    rel = Path('a_config') / 'motor_config.yaml'
+    if getattr(sys, 'frozen', False):
+        # Prefer an editable copy next to the exe; fall back to the bundled one.
+        beside_exe = Path(sys.executable).parent / rel
+        if beside_exe.exists():
+            return beside_exe
+        return Path(sys._MEIPASS) / rel
+    return Path(__file__).parent / rel
+
+
+_CONFIG_PATH = _resolve_config_path()
 
 
 BG      = '#1e1e2e'
