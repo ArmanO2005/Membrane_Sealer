@@ -18,6 +18,7 @@ wheel:
   home_search_velocity: 30000
   home_timeout: 30
   home_centering_time: 0
-  seal_point: 0               # TODO calibrate: wheel position in contact with membrane (0 = stays at home, safe)
+  home_position: -3200        # TODO calibrate: where homing parks, relative to the switch (0). Negative = further back (homing direction)
+  seal_point: 0               # TODO calibrate: wheel position in contact with membrane (relative to switch; 0 = at switch, safe)
   lift_point: 0               # TODO calibrate: clearance position between seals
   dwell_time: 1               # s the wheel sits on the seam before the spindle starts turning

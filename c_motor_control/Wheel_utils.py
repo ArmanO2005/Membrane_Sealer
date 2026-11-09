@@ -76,8 +76,15 @@ class WheelController(TMCM1111Controller):
                 raise TimeoutError(f"[{self.name}] Homing timed out")
             abort.sleep(0.01)
 
+        # Zero stays at the switch so seal_point/lift_point don't shift when home_position is tuned.
         self.motor.set_axis_parameter(self.AP.ActualPosition, 0)
-        print(f"[{self.name}] Homing complete. Position zeroed.")
+        print(f"[{self.name}] Switch found. Position zeroed.")
+
+        home_position = self.config.get("home_position", 0)
+        if home_position:
+            print(f"[{self.name}] Moving to home position {home_position}")
+            self.move_to(home_position, velocity=self.config.get("home_search_velocity") // 3)
+        print(f"[{self.name}] Homing complete.")
 
     def lower(self, point=None):
         """Move onto the seam (blocking)."""
