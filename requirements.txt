@@ -1,0 +1,3 @@
+pytrinamic==0.2.22
+pyserial==3.5
+PyYAML==6.0.2

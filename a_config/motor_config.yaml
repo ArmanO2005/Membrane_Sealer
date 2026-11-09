@@ -1,0 +1,23 @@
+# Ports: verify with `python b_diagnostics/find_serials.py` (COM numbers change between PCs/USB slots).
+# Positions are in microsteps. Values marked TODO are placeholders that must be calibrated on hardware.
+
+spindle:
+  name: Spindle
+  port: COM15                 # TODO verify
+  velocity: 10000
+  home_search_velocity: 10000
+  home_timeout: 30
+  home_centering_time: 0.4
+  notch_position: 0           # TODO calibrate: load/unload angle relative to home
+  full_rotation_steps: 51200  # TODO calibrate: 200 full steps x 256 usteps assumed, no gearing
+
+wheel:
+  name: Wheel
+  port: COM14                 # TODO verify
+  velocity: 30000
+  home_search_velocity: 30000
+  home_timeout: 30
+  home_centering_time: 0
+  seal_point: 0               # TODO calibrate: wheel position in contact with membrane (0 = stays at home, safe)
+  lift_point: 0               # TODO calibrate: clearance position between seals
+  dwell_time: 1               # s the wheel sits on the seam before the spindle starts turning
