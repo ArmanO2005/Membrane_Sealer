@@ -1,0 +1,9 @@
+name: membrane_sealer
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - tk            # tkinter GUI (gui.py)
+  - pip
+  - pip:
+      - -r requirements.txt   # pytrinamic, pyserial, PyYAML

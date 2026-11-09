@@ -1,0 +1,53 @@
+
+This file lists modules PyInstaller was not able to find. This does not
+necessarily mean these modules are required for running your program. Both
+Python's standard library and 3rd-party Python packages often conditionally
+import optional modules, some of which may be available only on certain
+platforms.
+
+Types of import:
+* top-level: imported at the top-level - look at these first
+* conditional: imported within an if-statement
+* delayed: imported within a function
+* optional: imported within a try-except-statement
+
+IMPORTANT: Do NOT post this list to the issue-tracker. Use it as a basis for
+            tracking down the missing module yourself. Thanks!
+
+missing module named pwd - imported by posixpath (delayed, conditional, optional), shutil (delayed, optional), tarfile (optional), pathlib._local (optional), subprocess (delayed, conditional, optional), netrc (delayed, optional), getpass (delayed, optional)
+missing module named grp - imported by shutil (delayed, optional), tarfile (optional), pathlib._local (optional), subprocess (delayed, conditional, optional)
+missing module named 'collections.abc' - imported by traceback (top-level), typing (top-level), inspect (top-level), logging (top-level), importlib.resources.readers (top-level), selectors (top-level), tracemalloc (top-level), yaml.constructor (top-level), can.typechecking (top-level), typing_extensions (top-level), asyncio.base_events (top-level), http.client (top-level), asyncio.coroutines (top-level), can.util (top-level), configparser (top-level), can.bit_timing (top-level), can.exceptions (top-level), can.broadcastmanager (top-level), can.bus (top-level), can.interface (top-level), can.io.asc (top-level), can.io.generic (top-level), can.listener (top-level), can.io.blf (top-level), can.io.canutils (top-level), can.io.csv (top-level), can.io.mf4 (top-level), sqlite3.dbapi2 (top-level), can.io.sqlite (top-level), can.io.trc (top-level), can.io.player (top-level), can.notifier (top-level), canopen.network (top-level), canopen.objectdictionary (top-level), canopen.sdo.base (top-level), canopen.variable (top-level), xml.etree.ElementTree (top-level), canopen.pdo.base (top-level)
+missing module named _posixsubprocess - imported by subprocess (conditional), multiprocessing.util (delayed)
+missing module named fcntl - imported by subprocess (optional), serial.serialposix (top-level)
+missing module named _frozen_importlib_external - imported by importlib._bootstrap (delayed), importlib (optional), importlib.abc (optional), zipimport (top-level)
+excluded module named _frozen_importlib - imported by importlib (optional), importlib.abc (optional), zipimport (top-level)
+missing module named posix - imported by os (conditional, optional), posixpath (optional), shutil (conditional), importlib._bootstrap_external (conditional)
+missing module named resource - imported by posix (top-level)
+missing module named _posixshmem - imported by multiprocessing.resource_tracker (conditional), multiprocessing.shared_memory (conditional)
+missing module named _scproxy - imported by urllib.request (conditional)
+missing module named termios - imported by serial.serialposix (top-level), getpass (optional)
+missing module named multiprocessing.BufferTooShort - imported by multiprocessing (top-level), multiprocessing.connection (top-level)
+missing module named multiprocessing.AuthenticationError - imported by multiprocessing (top-level), multiprocessing.connection (top-level)
+missing module named multiprocessing.get_context - imported by multiprocessing (top-level), multiprocessing.pool (top-level), multiprocessing.managers (top-level), multiprocessing.sharedctypes (top-level)
+missing module named multiprocessing.TimeoutError - imported by multiprocessing (top-level), multiprocessing.pool (top-level)
+missing module named multiprocessing.set_start_method - imported by multiprocessing (top-level), multiprocessing.spawn (top-level)
+missing module named multiprocessing.get_start_method - imported by multiprocessing (top-level), multiprocessing.spawn (top-level)
+missing module named pyimod02_importers - imported by C:\Users\arman\anaconda3\envs\membrane_sealer\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_pkgutil.py (delayed)
+missing module named pkg_resources - imported by wrapt.importer (delayed, optional)
+missing module named asyncio.DefaultEventLoopPolicy - imported by asyncio (delayed, conditional), asyncio.events (delayed, conditional)
+missing module named _typeshed - imported by can.io.generic (conditional)
+missing module named annotationlib - imported by typing_extensions (conditional)
+missing module named readline - imported by code (delayed, conditional, optional), sqlite3.__main__ (delayed, conditional, optional)
+missing module named 'asammdf.mdf' - imported by can.io.mf4 (optional)
+missing module named 'asammdf.blocks' - imported by can.io.mf4 (optional)
+missing module named numpy - imported by can.io.mf4 (optional)
+missing module named asammdf - imported by can.io.mf4 (optional)
+missing module named win32event - imported by can.broadcastmanager (delayed)
+missing module named pywintypes - imported by can.broadcastmanager (delayed)
+missing module named vms_lib - imported by platform (delayed, optional)
+missing module named 'java.lang' - imported by platform (delayed, optional)
+missing module named java - imported by platform (delayed)
+missing module named canmatrix - imported by canopen.pdo.base (delayed, optional)
+missing module named 'System.IO' - imported by serial.serialcli (top-level)
+missing module named System - imported by serial.serialcli (top-level)
+missing module named cStringIO - imported by intelhex.compat (conditional)
