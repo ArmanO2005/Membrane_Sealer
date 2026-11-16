@@ -75,7 +75,6 @@ class App:
             wheel_cfg = {}
         self._default_seal_point = str(wheel_cfg.get('seal_point', 0))
         self._default_lift_point = str(wheel_cfg.get('lift_point', 0))
-        self._default_dwell      = str(wheel_cfg.get('dwell_time', 1))
 
         sys.stdout = _LogRedirector(self._log_q)
 
@@ -123,7 +122,6 @@ class App:
 
         row = self._row(left)
         self.seal_point_var = self._entry(row, "Seal point:", self._default_seal_point, 8)
-        self.seal_dwell_var = self._entry(row, "Dwell (s):",  self._default_dwell,      5)
         row = self._row(left)
         self.seal_rotations_var = self._entry(row, "Rotations:",        "1.0",   5)
         self.seal_velocity_var  = self._entry(row, "Spindle velocity:", "10000", 7)
@@ -335,13 +333,12 @@ class App:
     def _do_seal(self):
         try:
             seal_point = int(self.seal_point_var.get())
-            dwell      = float(self.seal_dwell_var.get())
             rotations  = float(self.seal_rotations_var.get())
             velocity   = int(self.seal_velocity_var.get())
         except ValueError:
             self._append("ERROR: Invalid seal parameter value.\n")
             return
-        self._run(self.sealer.seal, seal_point, dwell, rotations, velocity)
+        self._run(self.sealer.seal, seal_point, rotations, velocity)
 
     def _do_off(self):
         self._run(self.sealer.off)

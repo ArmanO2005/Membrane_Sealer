@@ -37,14 +37,12 @@ class MembraneSealer:
         if self.spindle_motor: self.spindle_motor.move_to_notch()
         print("Initialized.")
 
-    def seal(self, seal_point=None, dwell_time=None, rotations=1.0, spindle_velocity=None):
+    def seal(self, seal_point=None, rotations=1.0, spindle_velocity=None):
         """Press + rotate: start the spindle spinning, lower the hot wheel onto the
-        seam while it turns, hold for `dwell_time` plus `rotations` turns, lift,
-        then stop the spindle and return it to the notch."""
+        seam while it turns, hold for `rotations` turns after contact, lift, then
+        stop the spindle."""
         if self.wheel_motor is None or self.spindle_motor is None:
             raise RuntimeError("Seal requires both Wheel and Spindle connected")
-        if dwell_time is None:
-            dwell_time = self.wheel_motor.config.get("dwell_time", 0)
 
         if not self.wheel_motor.heater_ready():
             print("[Wheel] WARNING: heater setpoint-OK not asserted; sealing anyway.")
@@ -54,7 +52,6 @@ class MembraneSealer:
         try:
             self.wheel_motor.lower(seal_point)
             contact_position = self.spindle_motor.get_position()
-            abort.sleep(dwell_time)
             print(f"[Spindle] Rolling seam: {rotations} rotation(s)")
             self.spindle_motor.wait_for_rotations(rotations, contact_position)
             self.wheel_motor.lift()
