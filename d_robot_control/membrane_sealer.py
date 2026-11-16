@@ -63,7 +63,6 @@ class MembraneSealer:
             self.spindle_motor.stop()
         self.spindle_motor.wait_for_stop()
         print("[Spindle] Rotation stopped")
-        self.spindle_motor.move_to_notch()
         print("Seal complete.")
 
     def _run_concurrently(self, *tasks):
