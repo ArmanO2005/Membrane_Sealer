@@ -4,13 +4,20 @@ from c_motor_control import abort
 
 
 class WheelController(TMCM1111Controller):
-    """Heated sealing wheel. Mechanically/electrically the same as the Roller's Staker:
-    the heater SSR is driven from a digital output on this TMCM1111."""
-    SETPOINT_OK_PIN = 1
-    HEATER_PIN = 2
+    """Heated sealing wheel. Mechanically/electrically the same as the Roller's Staker.
+    GPIO header (TMCM-1111 FW manual V1.13, SIO/GIO tables pp. 37-40):
+      heater MOSFET  -> header pins 2 (GND) + 4 (PWMU0) -> SIO 2, bank 2
+      setpoint line  -> header pins 1 (GND) + 3 (PWMD0) -> GIO 1, bank 0
+    """
+    SETPOINT_OK_PIN = 1   # GIO port 1 = PWMD0 (input)
+    HEATER_PIN = 2        # SIO port 2 = PWMU0 (output)
+    IO_MASK = 7           # GP 78: PWMU0-2 outputs, PWMD0-2 inputs (factory default)
 
     def __init__(self, config):
         super().__init__(config)
+        # GP 78 lives in EEPROM; enforce it so PWMU0 drives and PWMD0 reads. Only write on mismatch.
+        if self.interface.get_global_parameter(78, 0) != self.IO_MASK:
+            self.interface.set_global_parameter(78, 0, self.IO_MASK)
 
     # ------------------------------------------------------------------ heater
     # Staker heater topped out at ~240 C; assumed identical here.
